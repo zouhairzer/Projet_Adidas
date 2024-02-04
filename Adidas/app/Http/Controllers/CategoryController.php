@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\DB;
 
 use Illuminate\Http\Request;
 use App\Models\category;
@@ -10,7 +11,11 @@ class CategoryController extends Controller
 {
     public function index()
     {
-        return view('adidass.index');
+        $products = DB::table('products')->join('categories', 'products.cat_id', '=', 'categories.id')
+                                            ->select('categories.name as cat_name', 'products.*')
+                                            ->get();
+        return view('adidass.index',compact('products'));
+        
     }
 
 

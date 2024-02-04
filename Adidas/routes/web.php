@@ -20,7 +20,7 @@ use App\Http\Controllers\ProductsController;
 // });
 
 
-Route::get('/adidass',[CategoryController::class, 'index']);
+Route::get('/',[CategoryController::class, 'index']);
 
 Route::get('/category',[CategoryController::class, 'category']);
 
@@ -41,3 +41,10 @@ Route::get('/products',[ProductsController::class, 'product']);
 Route::get('/inputProduct',[ProductsController::class, 'ajouter']);
 
 Route::post('/ajouter/product',[ProductsController::class, 'ajouter_Product']);
+
+Route::get('/deleteProduct/{id}', [ProductsController::class, 'delete_product']);
+
+Route::get('/updateProduct/{id}',[ProductsController::class, 'fetch_all']);
+
+Route::post('/update/product',[ProductsController::class, 'update_product']);
+
